@@ -1,0 +1,64 @@
+﻿body {
+    user-select: none;
+}
+
+#gameboard-area {
+    text-align: center;
+}
+
+.gamebutton {
+    width: 35px;
+    height: 35px;
+    margin: 3px;
+    border-radius: 7px;
+    background-color: rgb(240, 240, 240);
+    border-style: solid;
+    border-color: rgb(200, 200, 200);
+    transition-duration: 200ms;
+    line-height: 0;
+    vertical-align: top;
+    justify-content: center;
+}
+
+    .gamebutton:focus {
+        /* overide user agent stylesheet */
+        outline: none;
+    }
+
+    .gamebutton:hover:not(.gamebutton-player1):not(.gamebutton-player2) {
+        background-color: rgb(200, 200, 200);
+    }
+
+.gamebutton-player1 {
+    background-color: rgb(255, 135, 135); /* light red */
+    border-color: rgb(255, 135, 135);
+}
+
+.gamebutton-player2 {
+    background-color: rgb(163, 209, 117); /* light green */
+    border-color: rgb(163, 209, 117);
+}
+
+.gameboard-quadrant {
+    background-color: white;
+    display: inline-block;
+    margin: 7px;
+    border-radius: 7px;
+    transition-duration: 200ms;
+}
+
+.gameboard-quadrant:not(.gameboard-quadrant-player1):not(.gameboard-quadrant-player2):hover {
+    box-shadow: 0 25.6px 57.6px 0 rgba(0,0,0,.22), 0 4.8px 14.4px 0 rgba(0,0,0,.18)
+}
+
+.gameboard-quadrant-player1 {
+    background-color: rgb(255, 194, 194); /* light red */
+}
+
+.gameboard-quadrant-player2 {
+    background-color: rgb(213, 239, 181); /* light green */
+}
+
+.gameboard-quadrant-next {
+    background-color: rgb(218, 218, 218);
+}

@@ -1,0 +1,31 @@
+﻿doctype html
+html
+  head
+    title Ultimate TicTacToe AI
+    link(rel='stylesheet', href='https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/10.0.0/css/fabric.min.css')
+
+    link(rel='stylesheet', href='./styles.css')
+
+    script.
+        // jquery library
+        window.$ = window.jQuery = require('jquery');
+
+        // ultimate tictactoe ai
+        window.uTicTacToe = require('ultimate-tictactoe-ai');
+
+    script(src='controller.js')
+    script(src='game.js')
+  body.ms-Fabric
+    p.ms-font-su.ms-fontColor-themePrimary Ultimate TicTacToe
+
+    // render buttons
+    #gameboard-area
+        - for(var row = 0; row < 3; row++)
+            - for(var col = 0; col < 3; col++)
+                .gameboard-quadrant.ms-depth-8(class='gameboard-quadrant-row-' + row + ' gameboard-quadrant-col-' + col)
+                    - for(var subRow = 0; subRow < 3; subRow++)
+                        - for(var subCol = 0; subCol < 3; subCol++)
+                            button.gamebutton(class='gamebutton-row-' + row + ' gamebutton-col-' + col +
+                            ' gamebutton-subRow-' + subRow + ' gamebutton-subCol-' + subCol)=" "
+                        br
+            br

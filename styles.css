@@ -1,0 +1,85 @@
+﻿body {
+    user-select: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+#gameboard-area {
+    text-align: center;
+}
+
+.gamebutton {
+    width: 35px;
+    height: 35px;
+    margin: 3px;
+    border-radius: 7px;
+    background-color: rgb(240, 240, 240);
+    border-style: solid;
+    border-color: rgb(200, 200, 200);
+    transition-duration: 200ms;
+    line-height: 0;
+    vertical-align: top;
+    justify-content: center;
+}
+
+.gamebutton:focus {
+    /* overide user agent stylesheet */
+    outline: none;
+}
+
+    
+.gameboard-quadrant-next .gamebutton:not(.gamebutton-player1):not(.gamebutton-player2) {
+    background-color: rgb(230, 230, 230);
+}
+
+.gamebutton:hover:not(.gamebutton-player1):not(.gamebutton-player2) {
+    background-color: rgb(200, 200, 200);
+}
+
+.gamebutton-player1 {
+    background-color: rgb(255, 135, 135); /* light red */
+    border-color: rgb(255, 135, 135);
+}
+.gamebutton-player1::after{
+    content: "X";
+}
+
+.gamebutton-player2 {
+    background-color: rgb(163, 209, 117); /* light green */
+    border-color: rgb(163, 209, 117);
+}
+.gamebutton-player2::after{
+    content: "O";
+}
+
+.gameboard-quadrant {
+    background-color: white;
+    display: inline-block;
+    margin: 10px;
+    border-radius: 7px;
+    transition-duration: 200ms;
+    box-shadow: 0 3.2px 7.2px 0 rgba(0,0,0,.132), 0 0.6px 1.8px 0 rgba(0,0,0,.108);
+}
+
+.gameboard-quadrant:not(.gameboard-quadrant-player1):not(.gameboard-quadrant-player2):hover {
+    box-shadow: 0 25.6px 57.6px 0 rgba(0,0,0,.22), 0 4.8px 14.4px 0 rgba(0,0,0,.18); /* ms-depth-64 */
+}
+
+.gameboard-quadrant-player1 {
+    background-color: rgb(255, 194, 194); /* light red */
+}
+
+.gameboard-quadrant-player2 {
+    background-color: rgb(213, 239, 181); /* light green */
+}
+
+.gameboard-quadrant-next {
+    /* background-color: rgb(214, 214, 214); */
+    background-color: rgb(205, 214, 255);
+}
+
+#app-version-number {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 2px;
+}

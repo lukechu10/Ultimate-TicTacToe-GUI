@@ -1,0 +1,21 @@
+{
+  "name": "electron-app",
+  "version": "0.0.1",
+  "description": "Electron APP",
+  "main": "main.js",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "electron": "^6.0.2",
+    "jquery": "^3.4.1",
+    "ultimate-tictactoe-ai": "^0.3.1"
+  },
+  "scripts": {
+    "build:pug": "pug ./",
+    "build:pugwatch": "pug -w ./"
+  },
+  "devDependencies": {
+    "electron-builder": "^21.2.0"
+  }
+}
