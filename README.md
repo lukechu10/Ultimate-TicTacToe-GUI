@@ -4,7 +4,7 @@ Powered by `Ultimate-TicTacToe-AI`: https://github.com/lukechu10/Ultimate-TicTac
 
 ## Build instructions
 
-```shell
+```bash
 git clone https://github.com/lukechu10/Ultimate-TicTacToe-GUI.git uttt
 cd uttt
 npm install
