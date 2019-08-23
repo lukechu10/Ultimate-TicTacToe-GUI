@@ -7,7 +7,7 @@
     "name": ""
   },
   "dependencies": {
-    "electron": "^6.0.2",
+    "electron": "^6.0.3",
     "jquery": "^3.4.1",
     "ultimate-tictactoe-ai": "^0.3.1"
   },
