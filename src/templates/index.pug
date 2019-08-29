@@ -1,0 +1,51 @@
+﻿doctype html
+html
+  head
+    title Ultimate TicTacToe AI
+    link(rel='stylesheet', href='../css/styles.css')
+    link(rel='stylesheet', href='../css/link.min.css')
+    link(rel="stylesheet", href="../css/semantic.min.css")
+    link(rel="stylesheet", href="../css/animate.css")
+
+    script(src='../js/controller.js' link-js-library)
+    script(src='../js/game.js')
+    script(src='../js/semantic.js' link-js-library)
+    script(src='../js/link.min.js' link-js-library)
+    // linkjs driver
+    script(src='../js/driver.js' link-js-library)
+  body            
+    #content
+        // options
+        //p Choose your player
+        //button(onclick="playerNum = 1; updatePlayer()") X
+        //button(onclick="playerNum = 2; updatePlayer()") O
+        navbar.ui.menu.fixed
+            a.item.active(href="./selection.html") Main Menu
+            .item="Selected Player: X"
+            .right.menu
+                .item
+                    .ui.button.primary.disabled#new-game-btn(onclick="resetGame()") New Game
+
+        center.ms-fontSize-28(style='margin-top: 60px;') Score: #[strong.eval-num 0]
+        // render buttons
+        #gameboard-area
+            - for(var row = 0; row < 3; row++)
+                - for(var col = 0; col < 3; col++)
+                    .gameboard-quadrant(class='gameboard-quadrant-row-' + row + ' gameboard-quadrant-col-' + col)
+                        - for(var subRow = 0; subRow < 3; subRow++)
+                            - for(var subCol = 0; subCol < 3; subCol++)
+                                button.gamebutton(class='gamebutton-row-' + row + ' gamebutton-col-' + col +
+                                ' gamebutton-subRow-' + subRow + ' gamebutton-subCol-' + subCol)=" "
+                            br
+                br
+        center Minimax Time: #[strong#minimax-time ...ms]
+
+        // move history div
+        #move-history
+
+        p#app-version-number Version Number 0.0.1
+        .ui.basic.modal
+            .content Are you sure you want to restart?
+            .actions
+                .ui.red.basic.cancel.inverted.button No
+                .ui.green.ok.inverted.button Yes, I'm about to loose

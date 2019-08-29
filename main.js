@@ -6,21 +6,27 @@ const path = require('path')
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-function createWindow() {
+createWindow = () => {
     // Create the browser window.
     mainWindow = new BrowserWindow({
         width: 800,
         height: 700,
+        minWidth: 450,
+        minHeight: 600,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: true
         },
-        //show: false,
+        backgroundColor: '#FFF',
+        show: false,
         title: "Ultimate TicTacToe AI",
-    })
+        fullscreenable: false
+    });
+
+    mainWindow.setMenuBarVisibility(false);
 
     // and load the index.html of the app.
-    mainWindow.loadFile('index.html')
+    mainWindow.loadFile(path.join(__dirname, 'src/html/selection.html'));
 
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()

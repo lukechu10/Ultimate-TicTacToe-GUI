@@ -7,15 +7,24 @@
     "name": ""
   },
   "dependencies": {
-    "electron": "^6.0.3",
     "jquery": "^3.4.1",
-    "ultimate-tictactoe-ai": "^0.3.1"
+    "ultimate-tictactoe-ai": "^0.3.2"
   },
   "scripts": {
-    "build:pug": "pug ./",
-    "build:pugwatch": "pug -w ./"
+    "build:pug": "pug --out ./src/html ./src/templates",
+    "build:pugwatch": "pug --out ./src/html -w ./src/templates",
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "devDependencies": {
+    "electron": "^6.0.4",
     "electron-builder": "^21.2.0"
+  },
+  "build": {
+    "appId": "your.id",
+    "mac": {
+      "category": "your.app.category.type"
+    }
   }
 }

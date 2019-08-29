@@ -1,27 +1,4 @@
-﻿// thread for running minimax calculation
-const { Worker } = require('worker_threads')
-
-function runService(workerData) {
-    return new Promise((resolve, reject) => {
-        const worker = new Worker('./minimaxWorker.js', { workerData });
-        worker.on('message', resolve);
-        worker.on('error', reject);
-        worker.on('exit', (code) => {
-            if (code !== 0)
-                reject(new Error(`Worker stopped with exit code ${code}`));
-        })
-    })
-}
-
-async function run() {
-    const result = await runService('world')
-    console.log(result);
-}
-
-run().catch(err => console.error(err))
-
-
-// event handling
+﻿// event handling
 var playerNum = 1;
 var opponentNum = 2;
 
@@ -75,10 +52,12 @@ updateQuadrantWins = (subWins) => {
 gameStateFinished = false;
 
 
-$(() => {
+$(document).on("pageLoad", () => {
     updateQuadrantNext(-1, -1);
     // handle button click
     $("button.gamebutton").click((event) => {
+        $("#new-game-btn").removeClass("disabled");
+
         if (!gameStateFinished) {
             // generate list of availibe moves and see if user move is legal
             // human player is player 1
@@ -105,6 +84,7 @@ $(() => {
             else {
                 // update board
                 game.applyMove(row, col, subRow, subCol, "player" + playerNum);
+                game.checkSubWin(row, col);
                 // update ui
                 //sq.addClass("gamebutton-player" + playerNum);
                 setBoard(row, col, subRow, subCol, playerNum);
@@ -116,36 +96,37 @@ $(() => {
                 $(".eval-num").text(game.evaluate());
 
                 if (game.checkForWinGlobal() == "player" + playerNum) {
-                    alert("You win!");
+                    alert("You won!");
                     gameStateFinished = true;
                     return;
                 }
 
                 // computer turn
-                // random move
                 moves = game.availibleMoves("player" + opponentNum);
                 if (moves.length == 0) {
                     alert("It's a tie");
                     gameStateFinished = true;
                     return;
                 }
-                //var move = moves[Math.floor(Math.random() * moves.length)];
+                // time move
+                var time1 = new Date();
                 var move = game.bestMove("player" + opponentNum);
+                var time2 = new Date();
+                $("#minimax-time").text((time2 - time1) + "ms");
                 //console.log(move)
 
                 // apply move
                 game.applyMove(move.row, move.col, move.subRow, move.subCol, move.who);
                 // update ui
-                console.log(opponentNum)
                 setBoard(move.row, move.col, move.subRow, move.subCol, opponentNum);
                 // check for win
-                //game.checkSubWin(move.row, move.col);
+                game.checkSubWin(move.row, move.col);
                 updateQuadrantWins(game.subWins());
                 updateQuadrantNext(move.subRow, move.subCol);
                 $(".eval-num").text(game.evaluate());
 
                 if (game.checkForWinGlobal() == "player" + opponentNum) {
-                    alert("You loose!");
+                    alert("You lost!");
                     gameStateFinished = true;
                     return;
                 }
@@ -154,17 +135,25 @@ $(() => {
     });
 });
 
-/*
-var gameBoard = new uTicTacToe.uTicTacToe();
-var npmGameBoard = new npmuTicTacToe.uTicTacToe();
+/**
+ * Resets the game.
+ */
+resetGame = () => {
+    const resetComponents = () => {
+        game = new uTicTacToe.uTicTacToe();
+        $(".gamebutton").removeClass("gamebutton-player1").removeClass("gamebutton-player2");
+        $(".gameboard-quadrant").removeClass("gameboard-quadrant-player1").removeClass("gameboard-quadrant-player2");
+        updateQuadrantNext(-1, -1);
+        $(".eval-num").text(0);
+        $("#minimax-time").text("...ms");
+    }
 
-var applyMove = (row, col, subRow, subCol, who) => {
-    gameBoard.applyMove(row, col, subRow, subCol, who);
-    npmGameBoard.applyMove(row, col, subRow, subCOl, who);
-    npmGameBoard.checkSubWin(row, col);
+    if (gameStateFinished) {
+        resetComponents();
+    }
+    else {
+        $(".ui.basic.modal").modal('show').modal({
+            onApprove: resetComponents
+        });
+    }
 }
-
-while (true) {
-    // npm UTTT turn
-
-}*/

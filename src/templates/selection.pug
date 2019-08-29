@@ -1,0 +1,29 @@
+doctype html
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+
+        link(rel="stylesheet", href="../css/selection.css")
+        link(rel="stylesheet", href="../css/link.min.css")
+        link(rel="stylesheet", href="../css/semantic.min.css")
+        link(rel="stylesheet", href="../css/animate.css")
+        script(link-js-library).
+            window.$ = window.jQuery = require('jquery');
+            const remote = require('electron').remote
+        script(src='../js/semantic.js' link-js-library)
+        script(src='../js/link.min.js' link-js-lbrary)
+        script(src='../js/driver.js' link-js-library)
+
+        script(src='../js/controller.js' link-js-library)
+
+        title Ultimate TicTacToe AI
+    body
+        #content
+            h1.animated.slideInLeft.faster(style="text-align: center;") Ultimate TicTacToe
+            a.ui.button.primary#menu-btn.animated.slideInUp.faster(href="./index.html") Start a new game (Player vs Computer)
+            a.ui.button#menu-btn.animated.slideInUp.faster(href="./index.html" style="margin-top: 10px;") How do you play?
+
+            a.ui.button#menu-btn.animated.fadeIn.faster(onclick="remote.getCurrentWindow().close()" style="margin-top: 40px;") Exit
