@@ -16,6 +16,9 @@
     "build:pugwatch": "pug --out ./src/html -w ./src/templates",
     "start": "electron .",
     "pack": "electron-builder --dir",
+    "pack:windows": "electron-builder --dir --windows",
+    "pack:macos": "electron-builder --dir --macos",
+    "pack:linux": "electron-builder --dir --linux",
     "dist": "electron-builder"
   },
   "devDependencies": {
@@ -23,9 +26,9 @@
     "electron-builder": "^21.2.0"
   },
   "build": {
-    "appId": "your.id",
+    "appId": "ultimate.tictactoe.gui",
     "mac": {
-      "category": "your.app.category.type"
+      "category": "public.app-category.board-games"
     }
   }
 }
