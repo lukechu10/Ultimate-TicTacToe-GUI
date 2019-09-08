@@ -9,7 +9,7 @@
   "dependencies": {
     "hotkeys-js": "^3.7.1",
     "jquery": "^3.4.1",
-    "ultimate-tictactoe-ai": "^0.3.2"
+    "ultimate-tictactoe-ai": "^0.4.0"
   },
   "scripts": {
     "build:pug": "pug --out ./src/html ./src/templates",
