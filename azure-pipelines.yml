@@ -50,7 +50,7 @@ jobs:
       script: 'npm run pack:windows'
   - task: ArchiveFiles@2
     inputs:
-      rootFolderOrFile: './dist/windows-unpacked/'
+      rootFolderOrFile: './dist/win-unpacked/'
       includeRootFolder: true
       archiveType: 'zip'
       archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-windows.zip'
