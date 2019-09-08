@@ -11,6 +11,11 @@ pool:
 
 steps:
 - task: CmdLine@2
+  displayName: Install Node Modules
+  inputs:
+    script: 'npm install'
+- task: CmdLine@2
+  displayName: Pack application
   inputs:
     script: 'npm run pack:linux'
 - task: ArchiveFiles@2
