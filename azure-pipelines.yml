@@ -23,5 +23,5 @@ steps:
     rootFolderOrFile: './dist/linux-unpacked/'
     includeRootFolder: true
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-windows.zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-linux.zip'
     replaceExistingArchive: true
