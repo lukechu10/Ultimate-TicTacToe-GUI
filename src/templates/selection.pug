@@ -22,8 +22,8 @@ html(lang="en")
         title Ultimate TicTacToe AI
     body
         #content
-            h1.animated.slideInLeft.faster(style="text-align: center;") Ultimate TicTacToe
-            a.ui.button.primary#menu-btn.animated.slideInUp.faster(href="./index.html") Start a new game (Player vs Computer)
-            a.ui.button#menu-btn.animated.slideInUp.faster(href="./index.html" style="margin-top: 10px;") How do you play?
+            h1.ui.heading(style="text-align: center;") Ultimate TicTacToe
+            a.ui.button.primary#menu-btn(href="./index.html") Start a new game (Player vs Computer)
+            a.ui.button#menu-btn(href="./index.html" style="margin-top: 10px;") How do you play?
 
-            a.ui.button#menu-btn.animated.fadeIn.faster(onclick="remote.getCurrentWindow().close()" style="margin-top: 40px;") Exit
+            a.ui.button#menu-btn(onclick="remote.getCurrentWindow().close()" style="margin-top: 40px;") Exit

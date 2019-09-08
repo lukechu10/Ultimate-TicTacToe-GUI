@@ -7,6 +7,7 @@
     "name": ""
   },
   "dependencies": {
+    "hotkeys-js": "^3.7.1",
     "jquery": "^3.4.1",
     "ultimate-tictactoe-ai": "^0.3.2"
   },

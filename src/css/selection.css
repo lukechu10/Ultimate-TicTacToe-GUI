@@ -1,13 +1,9 @@
 body {
-    background: -webkit-linear-gradient(-45deg,  rgb(234,126,126) 0%,rgb(153,153,153) 50%,rgb(168,234,98) 100%) !important;
+    user-select: none;
 }
 
 #menu-btn {
     display: block;
     margin-left: 10px;
     margin-right: 10px;
-}
-
-h1 {
-    color: rgb(255, 255, 255)
 }

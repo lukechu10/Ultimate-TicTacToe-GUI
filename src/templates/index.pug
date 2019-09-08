@@ -7,6 +7,10 @@ html
     link(rel="stylesheet", href="../css/semantic.min.css")
     link(rel="stylesheet", href="../css/animate.css")
 
+    script(link-js-library).
+        window.$ = window.jQuery = require('jquery');
+        const remote = require('electron').remote
+
     script(src='../js/controller.js' link-js-library)
     script(src='../js/game.js')
     script(src='../js/semantic.js' link-js-library)
