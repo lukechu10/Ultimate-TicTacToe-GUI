@@ -7,6 +7,7 @@ trigger:
 - master
 
 jobs:
+# ubuntu build
 - job: ubuntuLatestBuild
   displayName: Ubuntu Latest Build
   pool:
@@ -34,6 +35,9 @@ jobs:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
       ArtifactName: 'Linux Build ($(Build.BuildId))'
       publishLocation: 'Container'
+
+
+# windows build
 - job: windowsLatestBuild
   displayName: Windows Latest Build
   pool:
@@ -60,4 +64,34 @@ jobs:
     inputs:
       PathtoPublish: '$(Build.ArtifactStagingDirectory)'
       ArtifactName: 'Windows Build ($(Build.BuildId))'
+      publishLocation: 'Container'
+
+
+# macOS build
+- job: macosLatestBuild
+  displayName: MacOS Latest Build
+  pool:
+    vmImage: 'macOS-latest'
+
+  steps:
+  - task: CmdLine@2
+    displayName: Install Node Modules
+    inputs:
+      script: 'npm install'
+  - task: CmdLine@2
+    displayName: Pack application
+    inputs:
+      script: 'npm run pack:linux'
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: './dist/mac-unpacked/'
+      includeRootFolder: true
+      archiveType: 'zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-macos.zip'
+      replaceExistingArchive: true
+  # publish artifact
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'MacOS Build ($(Build.BuildId))'
       publishLocation: 'Container'
