@@ -6,28 +6,58 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'ubuntu-latest'
+jobs:
+- job: ubuntuLatestBuild
+  displayName: Ubuntu Latest Build
+  pool:
+    vmImage: 'ubuntu-latest'
 
-steps:
-- task: CmdLine@2
-  displayName: Install Node Modules
-  inputs:
-    script: 'npm install'
-- task: CmdLine@2
-  displayName: Pack application
-  inputs:
-    script: 'npm run pack:linux'
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: './dist/linux-unpacked/'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-linux.zip'
-    replaceExistingArchive: true
-# publish artifact
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'build'
-    publishLocation: 'Container'
+  steps:
+  - task: CmdLine@2
+    displayName: Install Node Modules
+    inputs:
+      script: 'npm install'
+  - task: CmdLine@2
+    displayName: Pack application
+    inputs:
+      script: 'npm run pack:linux'
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: './dist/linux-unpacked/'
+      includeRootFolder: true
+      archiveType: 'zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+      replaceExistingArchive: true
+  # publish artifact
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'Linux Build ($(Build.BuildId))'
+      publishLocation: 'Container'
+- job: windowsLatestBuild
+  displayName: Windows Latest Build
+  pool:
+    vmImage: 'windows-latest'
+
+  steps:
+  - task: CmdLine@2
+    displayName: Install Node Modules
+    inputs:
+      script: 'npm install'
+  - task: CmdLine@2
+    displayName: Pack application
+    inputs:
+      script: 'npm run pack:windows'
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: './dist/windows-unpacked/'
+      includeRootFolder: true
+      archiveType: 'zip'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+      replaceExistingArchive: true
+  # publish artifact
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'Windows Build ($(Build.BuildId))'
+      publishLocation: 'Container'
