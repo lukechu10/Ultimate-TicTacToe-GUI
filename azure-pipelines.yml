@@ -10,15 +10,15 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: UseNode@1
+  inputs:
+- task: CmdLine@2
+  inputs:
+    script: 'npm run pack:linux'
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: './dist/win-unpacked/'
+    rootFolderOrFile: './dist/linux-unpacked/'
     includeRootFolder: true
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)-windows.zip'
     replaceExistingArchive: true
-
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
