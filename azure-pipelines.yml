@@ -81,7 +81,7 @@ jobs:
   - task: CmdLine@2
     displayName: Pack application
     inputs:
-      script: 'npm run pack:linux'
+      script: 'npm run pack:macos'
   - task: ArchiveFiles@2
     inputs:
       rootFolderOrFile: './dist/mac-unpacked/'
