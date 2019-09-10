@@ -1,34 +1,35 @@
 {
-  "name": "electron-app",
-  "version": "0.0.1",
-  "description": "Electron APP",
-  "main": "main.js",
-  "author": {
-    "name": ""
-  },
-  "dependencies": {
-    "hotkeys-js": "^3.7.1",
-    "jquery": "^3.4.1",
-    "ultimate-tictactoe-ai": "^0.4.2"
-  },
-  "scripts": {
-    "build:pug": "pug --out ./src/html ./src/templates",
-    "build:pugwatch": "pug --out ./src/html -w ./src/templates",
-    "start": "electron .",
-    "pack": "electron-builder --dir",
-    "pack:windows": "electron-builder --dir --windows",
-    "pack:macos": "electron-builder --dir --macos",
-    "pack:linux": "electron-builder --dir --linux",
-    "dist": "electron-builder"
-  },
-  "devDependencies": {
-    "electron": "^6.0.7",
-    "electron-builder": "^21.2.0"
-  },
-  "build": {
-    "appId": "ultimate.tictactoe.gui",
-    "mac": {
-      "category": "public.app-category.board-games"
-    }
-  }
+	"name": "electron-app",
+	"version": "0.0.1",
+	"description": "Electron APP",
+	"main": "main.js",
+	"author": {
+		"name": ""
+	},
+	"dependencies": {
+		"hotkeys-js": "^3.7.1",
+		"jquery": "^3.4.1",
+		"ultimate-tictactoe-ai": "^0.4.2"
+	},
+	"scripts": {
+		"build:pug": "pug --out ./src/html ./src/templates",
+		"build:pugwatch": "pug --out ./src/html -w ./src/templates",
+		"start": "electron .",
+		"pack": "electron-builder --dir",
+		"pack:windows": "electron-builder --dir --windows",
+		"pack:macos": "electron-builder --dir --macos",
+		"pack:linux": "electron-builder --dir --linux",
+		"dist": "electron-builder"
+	},
+	"devDependencies": {
+		"electron": "^6.0.7",
+		"electron-builder": "^21.2.0"
+	},
+	"build": {
+		"appId": "ultimate.tictactoe.gui",
+		"productName": "Ultimate TicTacToe",
+		"mac": {
+			"category": "public.app-category.board-games"
+		}
+	}
 }
