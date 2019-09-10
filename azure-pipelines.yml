@@ -12,8 +12,11 @@ jobs:
   displayName: Ubuntu Latest Build
   pool:
     vmImage: 'ubuntu-latest'
-
   steps:
+  # use nodeJS 10
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '10.x'
   - task: CmdLine@2
     displayName: Install Node Modules
     inputs:
@@ -42,8 +45,11 @@ jobs:
   displayName: Windows Latest Build
   pool:
     vmImage: 'windows-latest'
-
   steps:
+  # use nodeJS 10
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '10.x'
   - task: CmdLine@2
     displayName: Install Node Modules
     inputs:
@@ -72,8 +78,11 @@ jobs:
   displayName: MacOS Latest Build
   pool:
     vmImage: 'macOS-latest'
-
   steps:
+  # use nodeJS 10
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '10.x'
   - task: CmdLine@2
     displayName: Install Node Modules
     inputs:
