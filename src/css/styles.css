@@ -1,4 +1,4 @@
-﻿body {
+body {
     user-select: none;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -16,6 +16,7 @@
     background-color: rgb(240, 240, 240);
     border-style: solid;
     border-color: rgb(200, 200, 200);
+	border-width: 2px;
     transition-duration: 200ms;
     line-height: 0;
     vertical-align: top;
@@ -27,7 +28,7 @@
     outline: none;
 }
 
-    
+
 .gameboard-quadrant-next .gamebutton:not(.gamebutton-player1):not(.gamebutton-player2) {
     background-color: rgb(230, 230, 230);
 }
