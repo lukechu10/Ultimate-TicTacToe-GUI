@@ -146,6 +146,8 @@ resetGame = () => {
         updateQuadrantNext(-1, -1);
         $(".eval-num").text(0);
         $("#minimax-time").text("...ms");
+        $("#new-game-btn").addClass("disabled");
+        gameStateFinished = false;
     }
 
     if (gameStateFinished) {
