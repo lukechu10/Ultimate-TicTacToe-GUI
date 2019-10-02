@@ -1,6 +1,6 @@
 FROM gitpod/workspace-full-vnc
 
-WORKDIR /workspace/Minecraft-Box-Launcher
+WORKDIR /workspace/Ultimate-TicTacToe-GUI
 USER root
 
 # Install Electron dependencies.
