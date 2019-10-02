@@ -15,6 +15,7 @@
 		"build:pug": "pug --out ./src/html ./src/templates",
 		"build:pugwatch": "pug --out ./src/html -w ./src/templates",
 		"start": "electron .",
+		"start:gitpod": "electron . --no-sandbox",
 		"pack": "electron-builder --dir",
 		"pack:windows": "electron-builder --dir --windows",
 		"pack:macos": "electron-builder --dir --macos",
