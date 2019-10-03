@@ -50,6 +50,8 @@ jobs:
   - task: NodeTool@0
     inputs:
       versionSpec: '10.x'
+  - script: npm i -g node-gyp@latest
+    displayName: Install Node-Gyp
   - task: CmdLine@2
     displayName: Install Node Modules
     inputs:
