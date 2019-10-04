@@ -20,7 +20,8 @@ createWindow = () => {
         backgroundColor: '#FFF',
         show: false,
         title: "Ultimate TicTacToe AI",
-        fullscreenable: false
+        fullscreenable: false,
+        icon: path.join(__dirname, "/build", "icon.png")
     });
 
     mainWindow.setMenuBarVisibility(false);
